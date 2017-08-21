@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Tu peso en el espacio</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div id="pregunta" class="col-md-6 col-md-offset-3 contenido">
+				<h1>Tu peso en otro planeta</h1>
+				<p>En la tierra pesas distinto que en otros planetas</p>
+				<form class="form-horizontal">
+				<fieldset>
+					<div class="form-group">
+					  	<label class="col-md-4" control-label for="selectbasic">Elige tu Planeta</label>
+					  	<div class="col-md-4">
+					    <select id="select1" class="form-control">
+					    <option value=""></option>
+					    <option id="mercurio" value="1">Mercurio</option>
+					    <option id="venus" value="2">Venus</option>
+					    <option id="marte" value="3">Marte</option>
+					    <option id="jupiter" value="4">Jupíter</option>
+					    <option id="saturno" value="5">Saturno</option>
+					    <option id="urano" value="6">Urano</option>
+					    <option id="neptuno" value="7">Neptuno</option>
+					    <option id="pluton" value="8">Plutón</option>
+					    </select>
+					  	</div>
+					</div>
+				</fieldset>
+				</form>
+					<label>Elige tu Peso en la Tierra</label>
+					<input type="text" id="kilosos" />
+				<button id="botons" type="submit" name="action" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">Tu peso planetario</button>
+			</div>	
+		</div>
+	</div>
+	<div class="row">	
+		<div id="resultado" class="col-md-5 col-md-offset-3 astro">
+		</div>	
+	</div>				
+
+	<script src="js/jquery-3.2.1.min.js"></script> 
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/index.js"></script>
+
+</body>
+</html>
