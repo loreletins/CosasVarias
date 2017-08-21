@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/dibujo.css">
+	<title>Canvas</title>
+</head>
+<body>
+	<h1>Dibujando en canvas</h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-3 dibujando">
+				<form>
+					Cuantos Dibujos quieres?
+					<input type="checkbox" name="1" id="uno" value="1"> 1
+					<input type="checkbox" name="2" id="dos" value="2"> 2
+					<input type="checkbox" name="3" id="tres" value="3"> 3
+					<input type="checkbox" name="4" id="cuatro" value="4"> 4
+					<br>Cuantas lineas quieres?
+					<input type="text" id="texto_lineas" />
+					<input type="button" value="Vamos!" id="botons" /><br>
+				<form>
+				<div id="mensaje" class="col-md-8"></div>
+				<canvas width="500" height="500" id="dibujito"></canvas>
+				<p>Resultado!</p>
+
+			</div>
+			
+		</div>			
+	</div>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script src="js/dibujo.js"></script>
+
+</body>
+</html>
