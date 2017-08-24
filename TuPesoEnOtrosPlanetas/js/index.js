@@ -1,139 +1,64 @@
- $(document).ready(function() {
-var kilos = document.getElementById("kilosos");
-var g_tierra = 9.8;
-var g_mercurio = 0.38;
-var g_venus = 8.87;
-var g_marte = 3.7;
-var g_jupiter = 24.8;
-var g_saturno = 10.44;
-var g_urano = 8.7;
-var g_neptuno = 11.15;
-var g_pluton = 0.62;
+ $(document)
+  .ready(function () {
+    var kilos = document.getElementById("kilosos");
+    var g_tierra = 9.8;
+    var g_mercurio = 0.38;
+    var g_venus = 8.87;
+    var g_marte = 3.7;
+    var g_jupiter = 24.8;
+    var g_saturno = 10.44;
+    var g_urano = 8.7;
+    var g_neptuno = 11.15;
+    var g_pluton = 0.62;
 
-var nombre;
-var boton = document.getElementById("botons");
-boton.addEventListener("click", pesados);
-var a = document.getElementById("select1");
-a.addEventListener("change", function(){a = (this.value)}, false);
+    var planetas = {};
 
-var kilos_final;
-var kilos_final = parseInt(kilos_final);	
-	
-function pesoEnMercurio(){
-	var kilas = parseInt(kilos.value); 
-	(a == 1)
-	kilos_final = kilas * g_mercurio / g_tierra;
-	nombre = "Mercurio"
-	}
+    planetas["1"] = { nombre: "Mercurio", g: g_mercurio};
+    planetas["2"] = { nombre: "Venus", g: g_venus};
+    planetas["3"] = { nombre: "Marte", g: g_marte};
+    planetas["4"] = { nombre: "Jupiter", g: g_jupiter};
+    planetas["5"] = { nombre: "Saturno", g: g_saturno};
+    planetas["6"] = { nombre: "Urano", g: g_urano};
+    planetas["7"] = { nombre: "Neptuno", g: g_neptuno};
+    planetas["8"] = { nombre: "Plutón", g: g_pluton};
 
-function pesoEnVenus(){
-	var kilas = parseInt(kilos.value); 
-	(a == 2)
-	kilos_final = kilas * g_venus / g_tierra;
-	nombre = "Venus"
-	}
+    var planetas_permitidos = ["1", "2", "3", "4", "5", "6", "7", "8"];
 
-function pesoEnMarte(){
-	var kilas = parseInt(kilos.value);  
-	(a == 3)
-	kilos_final = kilas * g_marte / g_tierra;
-	nombre = "Marte"	
-	}
+    var nombre;
+    var boton = document.getElementById("botons");
+    boton.addEventListener("click", pesados);
+    var a = document.getElementById("select1");
+    a.addEventListener("change", function () {
+      a = (this.value)
+    }, false);
 
-function pesoEnJupiter(){
-	var kilas = parseInt(kilos.value); 
-	(a == 4)
-	kilos_final = kilas * g_jupiter / g_tierra;
-	nombre = "Jupiter"
-	}
+    var kilos_final;
+    var kilos_final = parseInt(kilos_final);
 
-function pesoEnSaturno(){
-	var kilas = parseInt(kilos.value);  
-	(a == 5)
-	kilos_final = kilas * g_saturno / g_tierra;
-	nombre = "Saturno"	
-	}
+    function peso () {
+      var kilas = parseInt(kilos.value);
+      kilos_final = kilas * planetas[a].g / g_tierra;
+      nombre = planetas[a].nombre
+    }
 
-function pesoEnUrano(){
-	var kilas = parseInt(kilos.value);  
-	(a == 6)
-	kilos_final = kilas * g_urano / g_tierra;
-	nombre = "Urano"	
-	}
+    $('#resultado')
+      .hide();
 
-function pesoEnNeptuno(){
-	var kilas = parseInt(kilos.value);  
-	(a == 7)
-	kilos_final = kilas * g_neptuno / g_tierra;
-	nombre = "Neptuno"	
-	}
+    function pesados() {
+      if (planetas_permitidos.indexOf(a) >= 0) {
+        peso();
+        $('#pregunta').hide();
+        $('#resultado').show();
+        document
+          .getElementById("resultado")
+          .innerHTML =
+          "<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + Math.round(kilos_final) + " kilos</p></div";
+      } else {
+        alert("Elige un planeta!")
+      }
 
-function pesoEnPluton(){
-	var kilas = parseInt(kilos.value);  
-	(a == 8)
-	kilos_final = kilas * g_pluton / g_tierra;
-	nombre = "Plutón"	
-	}
-$('#resultado').hide();
+    }
 
-function pesados(){
-	if (1 == a){
-		pesoEnMercurio();
-			$('#pregunta').hide();
-			$('#resultado').show();
-			document.getElementById("resultado").innerHTML =
-			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + Math.round(kilos_final) + " kilos</p></div";
+  });
 
-	}else if (2 == a){
-		pesoEnVenus();
-		$('#pregunta').hide();
-			$('#resultado').show();
-			document.getElementById("resultado").innerHTML =
-			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + Math.round(kilos_final) + " kilos</p></div";
-	}else if (3 == a){
-		pesoEnMarte();
-		$('#pregunta').hide();
-			$('#resultado').show();
-			document.getElementById("resultado").innerHTML =
-			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + Math.round(kilos_final) + " kilos</p></div";
-	}else if (4 == a){
-		pesoEnJupiter();
-		$('#pregunta').hide();
-			$('#resultado').show();
-			document.getElementById("resultado").innerHTML =
-			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + Math.round(kilos_final) + " kilos</p></div";
-	}else if (5 == a){
-		pesoEnSaturno();
-		$('#pregunta').hide();
-			$('#resultado').show();
-			document.getElementById("resultado").innerHTML =
-			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + Math.round(kilos_final) + " kilos</p></div";
-	}else if (6 == a){
-		pesoEnUrano();
-		$('#pregunta').hide();
-			$('#resultado').show();
-			document.getElementById("resultado").innerHTML =
-			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + Math.round(kilos_final) + " kilos</p></div";
-	}else if (7 == a){
-		pesoEnNeptuno();
-		$('#pregunta').hide();
-			$('#resultado').show();
-			document.getElementById("resultado").innerHTML =
-			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + Math.round(kilos_final) + " kilos</p></div";
-	}else if (8 == a){
-		pesoEnPluton();
-		$('#pregunta').hide();
-			$('#resultado').show();
-			document.getElementById("resultado").innerHTML =
-			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + Math.round(kilos_final)+ " kilos</p></div";
-	}else{
-		alert("Elige un planeta!")
-	}
-
-}
-
-});
-
-
-
-
+ 
