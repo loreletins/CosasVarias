@@ -85,3 +85,4 @@ function dibujarTeclado(evento){
 		}
 	
 }
+

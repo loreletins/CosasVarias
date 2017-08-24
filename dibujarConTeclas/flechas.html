@@ -2,21 +2,21 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="css/bootstrap.min.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
 	<link href="https://fonts.googleapis.com/icon?family=Roboto" rel="stylesheet">
 	<title>Dibujando!</title>
 </head>
 <body>
-	<div class="container todo">
+	<div class="container">
 		<div class="row">
-			<div class="col-md-8 col-xs-12 col-md-offset-2 contenido">
+			<div class="col-xs-4 col-sm-10 col-md-8 col-md-offset-2 contenido">
 				<canvas width="770" height="450" id="area_de_dibujo"></canvas>
 				<p>Dibuja con el mouse o con tu teclado, recuerda que donde ubiques el mouse <br>a partir de ahi comienza el trazo con las flechas del teclado!</p>
 				 	<label control-label for="selectbasic">Elige un Color</label>					
 						<select id="colores" class="form-control">
-							<option value=""></option>
+							<option value="black"></option>
 							<option id="rojo" value="red">Rojo</option>
 							<option id="azul" value="blue">Azul</option>
 							<option id="naranja" value="orange">Naranja</option>
