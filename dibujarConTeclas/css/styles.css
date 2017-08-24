@@ -1,0 +1,18 @@
+body{
+	background-color: #DCEDC8;
+}
+.contenido{
+	width: 800px;
+	margin-top: 5%;
+    box-shadow: 0 4px 8px 5px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #FFF;
+}
+
+.btn{
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+canvas{
+	margin-top: 1%;
+	 border: 1px solid gray;
+	}
