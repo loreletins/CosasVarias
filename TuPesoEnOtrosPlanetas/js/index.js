@@ -70,7 +70,7 @@ function pesoEnNeptuno(){
 
 function pesoEnPluton(){
 	var kilas = parseInt(kilos.value);  
-	(a == 6)
+	(a == 8)
 	kilos_final = kilas * g_pluton / g_tierra;
 	nombre = "Plutón"	
 	}
@@ -82,50 +82,50 @@ function pesados(){
 			$('#pregunta').hide();
 			$('#resultado').show();
 			document.getElementById("resultado").innerHTML =
-			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + kilos_final + " kilos</p></div";
+			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + Math.round(kilos_final) + " kilos</p></div";
 
 	}else if (2 == a){
 		pesoEnVenus();
 		$('#pregunta').hide();
 			$('#resultado').show();
 			document.getElementById("resultado").innerHTML =
-			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + kilos_final + " kilos</p></div";
+			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + Math.round(kilos_final) + " kilos</p></div";
 	}else if (3 == a){
 		pesoEnMarte();
 		$('#pregunta').hide();
 			$('#resultado').show();
 			document.getElementById("resultado").innerHTML =
-			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + kilos_final + " kilos</p></div";
+			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + Math.round(kilos_final) + " kilos</p></div";
 	}else if (4 == a){
 		pesoEnJupiter();
 		$('#pregunta').hide();
 			$('#resultado').show();
 			document.getElementById("resultado").innerHTML =
-			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + kilos_final + " kilos</p></div";
+			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + Math.round(kilos_final) + " kilos</p></div";
 	}else if (5 == a){
 		pesoEnSaturno();
 		$('#pregunta').hide();
 			$('#resultado').show();
 			document.getElementById("resultado").innerHTML =
-			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + kilos_final + " kilos</p></div";
+			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + Math.round(kilos_final) + " kilos</p></div";
 	}else if (6 == a){
 		pesoEnUrano();
 		$('#pregunta').hide();
 			$('#resultado').show();
 			document.getElementById("resultado").innerHTML =
-			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + kilos_final + " kilos</p></div";
+			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + Math.round(kilos_final) + " kilos</p></div";
 	}else if (7 == a){
 		pesoEnNeptuno();
 		$('#pregunta').hide();
 			$('#resultado').show();
 			document.getElementById("resultado").innerHTML =
-			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + kilos_final + " kilos</p></div";
+			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + Math.round(kilos_final) + " kilos</p></div";
 	}else if (8 == a){
 		pesoEnPluton();
 		$('#pregunta').hide();
 			$('#resultado').show();
 			document.getElementById("resultado").innerHTML =
-			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + kilos_final + " kilos</p></div";
+			"<img src='img/astro.gif'><p>Tu peso en " + nombre + " es " + Math.round(kilos_final)+ " kilos</p></div";
 	}else{
 		alert("Elige un planeta!")
 	}
