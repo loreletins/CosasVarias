@@ -2,6 +2,12 @@ var express = require('express');
 var app = express();
 var nodemailer = require('nodemailer');
 
+var bodyParser = require('body-parser')
+app.use( bodyParser.json() );
+app.use(bodyParser.urlencoded({     
+  extended: true
+  }));
+
 app.use('/lib',express.static(__dirname + '/node_modules')); 
 app.use('/public', express.static(__dirname + '/public'));
 
@@ -9,16 +15,18 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname +'/index.html');
 });
 
-app.get('/enviarMail', function (req,res){
+app.post('/imagen', function(req, res){
 	transporter.sendMail(mailOptions, function(error, response){
 		if(error){
 			console.log(error)
 				}else{
 					res.send('Mensaje Enviado')
-				};
-
-		});
+				
+			}
 	});
+
+});	
+
 
 var transporter = nodemailer.createTransport({
 	service: 'Gmail',

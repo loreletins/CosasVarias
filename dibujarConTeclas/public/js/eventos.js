@@ -5,6 +5,22 @@ var teclas = {
 	RIGHT: 39
 };
 
+
+
+$("#guardar").click(function(){
+var src = ($('#area_de_dibujo')[0]).toDataURL("image/png");
+$.ajax({
+  type: "POST",
+  url: "/imagen",
+  data: { 
+     imgBase64: src
+  }
+}).done(function(o) {
+  console.log('saved'); 
+  
+});
+})
+
 var color = document.getElementById("colores");
 color.addEventListener("change", function(){color = (this.value)}, false);
 
