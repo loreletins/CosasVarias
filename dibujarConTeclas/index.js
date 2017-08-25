@@ -15,16 +15,29 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname +'/index.html');
 });
 
+
 app.post('/imagen', function(req, res){
+	var cid = 'dibujo-loreto-' + new Date().getTime();
+	var mailOptions = {
+	from: ' Loreto Jara',
+	to:['riita.lyn@gmail.com', 'ezequiel@adaitw.com.ar'],
+	subject: 'Gracias por dibujar',
+	text: 'Aqui esta tu dibujo',
+	html: 'Aqui esta tu dibujo: <img src="cid:' + cid + '"/>',
+	attachments: [{
+	filename: cid + '.jpg',
+	content: req.body.imgBase64.split("base64,")[1],
+	encoding: 'base64',
+	cid: cid
+  	}]
+	}
 	transporter.sendMail(mailOptions, function(error, response){
 		if(error){
 			console.log(error)
-				}else{
-					res.send('Mensaje Enviado')
-				
-			}
-	});
-
+		}else{
+			res.send('Mensaje Enviado')
+		}
+});
 });	
 
 
@@ -34,14 +47,7 @@ var transporter = nodemailer.createTransport({
 		user:'dibujandin@gmail.com',
 		pass:'dibujito123'
 	}
-})
-
-var mailOptions = {
-	from: ' Loreto Jara',
-	to:'riita.lyn@gmail.com',
-	subject: 'Gracias por dibujar',
-	text: 'Aqui esta tu dibujo'
-}
+});
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
