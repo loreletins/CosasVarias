@@ -5,9 +5,6 @@ var teclas = {
 	RIGHT: 39
 };
 
-var dibujito = canvas.toDataURL("image/png");
-$.post('/api/sendemail', {image: dibujito});
-
 var color = document.getElementById("colores");
 color.addEventListener("change", function(){color = (this.value)}, false);
 
