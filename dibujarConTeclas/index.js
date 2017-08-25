@@ -19,7 +19,7 @@ app.get('/', function (req, res) {
 app.post('/imagen', function(req, res){
 	var cid = 'dibujo-loreto-' + new Date().getTime();
 	var mailOptions = {
-	from: ' Loreto Jara',
+	from: ' Loreto Jara <loretojarabaracatt@gmail.com>',
 	to: req.body.email,
 	subject: 'Gracias por dibujar',
 	text: 'Aqui esta tu dibujo',
@@ -44,8 +44,8 @@ app.post('/imagen', function(req, res){
 var transporter = nodemailer.createTransport({
 	service: 'Gmail',
 	auth:{
-		user:'dibujandin@gmail.com',
-		pass:'dibujito123'
+		user:'loretojarabaracatt@gmail.com',
+		pass:'dibujar123'
 	}
 });
 
