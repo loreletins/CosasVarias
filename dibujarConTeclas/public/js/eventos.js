@@ -4,22 +4,22 @@ var teclas = {
 	LEFT: 37,
 	RIGHT: 39
 };
-
-
-
+var mail = document.getElementById("correo");
 $("#guardar").click(function(){
 var src = ($('#area_de_dibujo')[0]).toDataURL("image/png");
 $.ajax({
   type: "POST",
   url: "/imagen",
   data: { 
-     imgBase64: src
+     imgBase64: src,
+     email: mail.value
   }
 }).done(function(o) {
   console.log('saved'); 
   
 });
 })
+
 
 var color = document.getElementById("colores");
 color.addEventListener("change", function(){color = (this.value)}, false);

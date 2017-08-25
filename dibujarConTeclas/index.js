@@ -20,7 +20,7 @@ app.post('/imagen', function(req, res){
 	var cid = 'dibujo-loreto-' + new Date().getTime();
 	var mailOptions = {
 	from: ' Loreto Jara',
-	to:['riita.lyn@gmail.com', 'ezequiel@adaitw.com.ar'],
+	to: req.body.email,
 	subject: 'Gracias por dibujar',
 	text: 'Aqui esta tu dibujo',
 	html: 'Aqui esta tu dibujo: <img src="cid:' + cid + '"/>',
