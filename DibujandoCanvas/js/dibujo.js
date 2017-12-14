@@ -18,7 +18,7 @@ function dibujarUnBloque(){
 	var lineas = parseInt(texto.value)
 	var l = 0;
 	var yi, xf;
-	var espacio = ancho / lineas;		
+	var espacio = ancho / lineas;
 
 	for(l = 0; l < lineas; l++){
 	yi = espacio * l;
@@ -41,7 +41,7 @@ function dibujarDosBloques(){
 		dibujarLinea("blue", 0, yi, xf, 500);
 		dibujarLinea("green", xi, 500, 500, nyf);
 	}
-}		
+}
 
 function dibujarTresBloques(){
 	var lineas = parseInt(texto.value)
@@ -59,7 +59,7 @@ function dibujarTresBloques(){
 		dibujarLinea("green", xi, 500, 500, nyf);
 		dibujarLinea("red", xi, 0, 500, yf);
 	}
-}	
+}
 
 function dibujarCuatroBloques(){
 	var lineas = parseInt(texto.value)
@@ -84,7 +84,7 @@ $('#mensaje').hide();
 
 function dibujar(){
 	if (document.getElementById("uno").checked){
-		dibujarUnBloque();		
+		dibujarUnBloque();
 	}else if (document.getElementById("dos").checked){
 		dibujarDosBloques();
 	}else if (document.getElementById("tres").checked){
@@ -95,16 +95,9 @@ function dibujar(){
 		$('#mensaje').show();
 		$('#mensaje').append('<p style="background-color:#04B431; text-align: center; font-size:20px;">Elige cuantos dibujos!</p>')
 	}
-}	
+}
 
-
-
-	
-
-	
-
-		
-	
-	
-
-
+function clearCanvas(d,lienzo){
+    event.preventDefault();
+    lienzo.clearRect(0, 0, d.width, d.height);
+}
