@@ -45,6 +45,7 @@
       .hide();
 
     function pesados() {
+      event.preventDefault();
       if (planetas_permitidos.indexOf(a) >= 0) {
         peso();
         $('#pregunta').hide();
@@ -56,9 +57,5 @@
       } else {
         alert("Elige un planeta!")
       }
-
     }
-
   });
-
- 
