@@ -19,3 +19,9 @@ canvas{
 .espacio{
 	margin-left: 43%;
 }
+@media (max-width: 384px){
+	canvas{
+		width: 200px;
+		height: 100px;
+	}
+}
