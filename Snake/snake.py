@@ -15,8 +15,8 @@ mover_y = 300
 mover_x_cambio = 0
 mover_y_cambio = 0
 
-azarManzanaX = random.randrange(0, 800 -10)
-azarManzanaY = random.randrange(0, 400 -10)
+azarManzanaX = round(random.randrange(0, 300 - 10)/10.0)*10.0
+azarManzanaY = round(random.randrange(0, 300 - 10)/10.0)*10.0
 
 reloj = pygame.time.Clock()
 
@@ -45,7 +45,10 @@ while not gameExit:
 	pygame.draw.rect(superficie, Negro, [mover_x, mover_y, 10, 10])
 	pygame.display.update()
 
-	reloj.tick(10)
+	if mover_x == azarManzanaX and mover_y == azarManzanaY:
+		azarManzanaX = round(random.randrange(0, 300 - 10)/10.0)*10.0
+		azarManzanaY = round(random.randrange(0, 300 - 10)/10.0)*10.0
+	reloj.tick(15)
 
 pygame.quit()
 quit()
