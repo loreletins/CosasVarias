@@ -10,12 +10,11 @@ pygame.init()
 superficie = pygame.display.set_mode((800,500))
 pygame.display.set_caption('Serpiente')
 
-gameExit = False
-
 mover_x = 300
 mover_y = 300
 mover_x_cambio = 0
 mover_y_cambio = 0
+
 serp_tamano = 10
 ancho = 800
 altura = 500
@@ -26,10 +25,29 @@ font = pygame.font.SysFont(None, 25)
 listaSerpiente = []
 largoSerpiente = 1
 
-azarManzanaX = round(random.randrange(0, 300 - 10)/10.0)*10.0
-azarManzanaY = round(random.randrange(0, 300 - 10)/10.0)*10.0
+azarManzanaX = round(random.randrange(0, 300 - 20)/20.0)*20.0
+azarManzanaY = round(random.randrange(0, 300 - 20)/20.0)*20.0
 
 reloj = pygame.time.Clock()
+
+def intro_juego():
+	intro = True
+	while intro:
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				pygame.quit()
+				quit()
+			if event.type == pygame.KEYDOWN:
+				if event.key == pygame.K_c:
+					intro = False
+				elif event.type == pygame.K_q:
+					pygame.quit()
+					quit()
+
+		superficie.fill(Blanco)
+		message_to_screen("Bienvenid@s,para comenzar a jugar, presiona C", Negro, -100)
+		pygame.display.update()
+		reloj.tick(5)
 
 def serpiente (serp_tamano, listaSerpiente):
 	for i in listaSerpiente:
@@ -66,62 +84,80 @@ def pausa():
 					pausado = False
 
 		superficie.fill(Blanco)
-		message_to_screen("PAUSA", Negro)
+		message_to_screen("PAUSA, para continuar presiona C", Negro)
 		pygame.display.update()
 		reloj.tick(5)
 
-while not gameExit:
-	for event in pygame.event.get():
-		if event.type == pygame.QUIT:
+def gameLoop():
+	gameExit = False
+
+	mover_x = 300
+	mover_y = 300
+
+	mover_x_cambio = 0
+	mover_y_cambio = 0
+
+	listaSerpiente = []
+	largoSerpiente = 1
+
+	azarManzanaX = round(random.randrange(0, 300 - 20)/20.0)*20.0
+	azarManzanaY = round(random.randrange(0, 300 - 20)/20.0)*20.0
+
+	while not gameExit:
+
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				gameExit = True
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_LEFT:
+				mover_x_cambio = - serp_tamano
+				mover_y_cambio = 0
+			elif event.key == pygame.K_RIGHT:
+				mover_x_cambio = serp_tamano
+				mover_y_cambio = 0
+			elif event.key == pygame.K_UP:
+				mover_y_cambio = - serp_tamano
+				mover_x_cambio = 0
+			elif event.key == pygame.K_DOWN:
+				mover_y_cambio = serp_tamano
+				mover_x_cambio = 0
+			elif event.key == pygame.K_p:
+				pausa()
+
+		if mover_x >= ancho or mover_x < 0 or mover_y >= altura or mover_y <0:
 			gameExit = True
-	if event.type == pygame.KEYDOWN:
-		if event.key == pygame.K_LEFT:
-			mover_x_cambio = - serp_tamano
-			mover_y_cambio = 0
-		elif event.key == pygame.K_RIGHT:
-			mover_x_cambio = serp_tamano
-			mover_y_cambio = 0
-		elif event.key == pygame.K_UP:
-			mover_y_cambio = - serp_tamano
-			mover_x_cambio = 0
-		elif event.key == pygame.K_DOWN:
-			mover_y_cambio = serp_tamano
-			mover_x_cambio = 0
-		elif event.key == pygame.K_p:
-			pausa()
 
-	if mover_x >= ancho or mover_x < 0 or mover_y >= altura or mover_y <0:
-		gameExit = True
+		mover_y += mover_y_cambio
+		mover_x += mover_x_cambio
+		superficie.fill(Blanco)
+		pygame.draw.rect(superficie, Rojo, [azarManzanaX, azarManzanaY, 10, 10])
 
-	mover_y += mover_y_cambio
-	mover_x += mover_x_cambio
-	superficie.fill(Blanco)
-	pygame.draw.rect(superficie, Rojo, [azarManzanaX, azarManzanaY, 10, 10])
+		cabezaSerpiente = []
 
-	cabezaSerpiente = []
+		cabezaSerpiente.append(mover_x)
+		cabezaSerpiente.append(mover_y)
+		listaSerpiente.append(cabezaSerpiente)
+		if len(listaSerpiente)> largoSerpiente:
+			del listaSerpiente[0]
+		serpiente(serp_tamano, listaSerpiente)
+		puntos(largoSerpiente-1)
+		pygame.display.update()
 
-	cabezaSerpiente.append(mover_x)
-	cabezaSerpiente.append(mover_y)
-	listaSerpiente.append(cabezaSerpiente)
-	if len(listaSerpiente)> largoSerpiente:
-		del listaSerpiente[0]
-	serpiente(serp_tamano, listaSerpiente)
-	puntos(largoSerpiente-1)
+		if mover_x == azarManzanaX and mover_y == azarManzanaY:
+			azarManzanaX = round(random.randrange(0, 300 - 10)/10.0)*10.0
+			azarManzanaY = round(random.randrange(0, 300 - 10)/10.0)*10.0
+			largoSerpiente += 1
+
+		reloj.tick(cuadro)
+
+
+	superficie.fill(Negro)
+	message_to_screen("Has perdido", Rojo)
 	pygame.display.update()
+	time.sleep(3)
 
-	if mover_x == azarManzanaX and mover_y == azarManzanaY:
-		azarManzanaX = round(random.randrange(0, 300 - 10)/10.0)*10.0
-		azarManzanaY = round(random.randrange(0, 300 - 10)/10.0)*10.0
-		largoSerpiente += 1
+	pygame.quit()
+	quit()
 
-	reloj.tick(cuadro)
-
-
-superficie.fill(Negro)
-message_to_screen("Has perdido", Rojo)
-pygame.display.update()
-time.sleep(3)
-
-pygame.quit()
-quit()
-
+intro_juego()
+gameLoop()
