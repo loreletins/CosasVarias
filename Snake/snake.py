@@ -89,8 +89,9 @@ def pausa():
 				elif event.key == pygame.K_c:
 					pausado = False
 
-		superficie.fill(Blanco)
-		message_to_screen("PAUSA, para continuar presiona C", Negro)
+		background = load_image('fondo.jpg')
+		superficie.blit(background, [0, 0])
+		message_to_screen("PAUSA, para continuar presiona C, para salir presiona Q", Negro)
 		pygame.display.update()
 		reloj.tick(5)
 
