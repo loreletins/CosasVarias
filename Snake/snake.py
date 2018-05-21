@@ -1,10 +1,15 @@
 import pygame
 import random
 import time
+import os
 
 Blanco = (255, 255, 255)
 Negro = (0, 0, 0)
 Rojo = (255, 0, 0)
+
+def load_image(name):
+	path = os.path.join('', name)
+	return pygame.image.load(path).convert()
 
 pygame.init()
 superficie = pygame.display.set_mode((800,500))
@@ -20,7 +25,7 @@ ancho = 800
 altura = 500
 cuadro = 15
 
-font = pygame.font.SysFont(None, 25)
+font = pygame.font.SysFont('none', 25)
 
 listaSerpiente = []
 largoSerpiente = 1
@@ -44,7 +49,8 @@ def intro_juego():
 					pygame.quit()
 					quit()
 
-		superficie.fill(Blanco)
+		background = load_image('fondo.jpg')
+		superficie.blit(background, [0, 0])
 		message_to_screen("Bienvenid@s,para comenzar a jugar, presiona C", Negro, -100)
 		pygame.display.update()
 		reloj.tick(5)
