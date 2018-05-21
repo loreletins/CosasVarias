@@ -92,11 +92,12 @@ while not gameExit:
 
 	reloj.tick(cuadro)
 
+
+superficie.fill(Negro)
 message_to_screen("Has perdido", Rojo)
 pygame.display.update()
 time.sleep(3)
 
-intro_juego()
 pygame.quit()
 quit()
 
