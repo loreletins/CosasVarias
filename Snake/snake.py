@@ -48,6 +48,28 @@ def puntos(score):
 	text = font.render("Puntos: " + str(score), True, Negro)
 	superficie.blit(text, [0, 0])
 
+
+def pausa():
+	pausado = True
+
+	while pausado:
+
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				pygame.quit()
+				quit()
+			if event.type == pygame.KEYDOWN:
+				if event.key == pygame.K_q:
+					pygame.quit()
+					quit()
+				elif event.key == pygame.K_c:
+					pausado = False
+
+		superficie.fill(Blanco)
+		message_to_screen("PAUSA", Negro)
+		pygame.display.update()
+		reloj.tick(5)
+
 while not gameExit:
 	for event in pygame.event.get():
 		if event.type == pygame.QUIT:
@@ -65,6 +87,8 @@ while not gameExit:
 		elif event.key == pygame.K_DOWN:
 			mover_y_cambio = serp_tamano
 			mover_x_cambio = 0
+		elif event.key == pygame.K_p:
+			pausa()
 
 	if mover_x >= ancho or mover_x < 0 or mover_y >= altura or mover_y <0:
 		gameExit = True
