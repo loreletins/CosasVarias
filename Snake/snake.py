@@ -23,14 +23,6 @@ cuadro = 15
 
 font = pygame.font.SysFont(None, 25)
 
-def serpiente (serp_tamano, listaSerpiente):
-	for i in listaSerpiente:
-		pygame.draw.rect(superficie, Negro, [i[0], i[1], serp_tamano, serp_tamano])
-
-def message_to_screen(msg, color):
-	pantalla_texto = font.render(msg, True, color)
-	superficie.blit(pantalla_texto, [300, 300])
-
 listaSerpiente = []
 largoSerpiente = 1
 
@@ -38,6 +30,19 @@ azarManzanaX = round(random.randrange(0, 300 - 10)/10.0)*10.0
 azarManzanaY = round(random.randrange(0, 300 - 10)/10.0)*10.0
 
 reloj = pygame.time.Clock()
+
+def serpiente (serp_tamano, listaSerpiente):
+	for i in listaSerpiente:
+		pygame.draw.rect(superficie, Negro, [i[0], i[1], serp_tamano, serp_tamano])
+
+def message_to_screen(msg, color,  y_displace=0):
+	textSur, textRect = text_objetos(msg, color)
+	textRect.center = (ancho/2), (altura/2) + y_displace
+	superficie.blit(textSur, textRect)
+
+def text_objetos(text, color):
+	textSuperficie = font.render(text, True, color)
+	return textSuperficie, textSuperficie.get_rect()
 
 def puntos(score):
 	text = font.render("Puntos: " + str(score), True, Negro)
@@ -91,6 +96,7 @@ message_to_screen("Has perdido", Rojo)
 pygame.display.update()
 time.sleep(3)
 
+intro_juego()
 pygame.quit()
 quit()
 
