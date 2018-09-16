@@ -159,7 +159,7 @@ def gameLoop():
 
 
 	superficie.fill(Negro)
-	message_to_screen("Has perdido", Rojo)
+	message_to_screen("Perdiste", Rojo)
 	pygame.display.update()
 	time.sleep(3)
 
