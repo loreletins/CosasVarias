@@ -56,8 +56,8 @@ function soltarMouse(evento){
 }
 
 function clearCanvas(cuadrito,papel) {
-    event.preventDefault();
     papel.clearRect(0, 0, cuadrito.width, cuadrito.height);
+    //e.preventDefault();
 }
 
 document.addEventListener("keydown", dibujarTeclado); //mover con teclado
